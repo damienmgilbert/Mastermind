@@ -1,9 +1,12 @@
+using Mastermind.ViewModels;
+
 namespace Mastermind.Views;
 
 public partial class AboutPage : ContentPage
 {
-	public AboutPage()
+	public AboutPage(AboutViewModel viewModel)
 	{
 		InitializeComponent();
+		this.BindingContext = viewModel;
 	}
 }

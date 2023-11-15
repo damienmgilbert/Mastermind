@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-
+using Mastermind.ViewModels;
 namespace Mastermind
 {
     public partial class App : Application
@@ -9,24 +9,6 @@ namespace Mastermind
             InitializeComponent();
 
             MainPage = new AppShell();
-        }
-
-        private string themeSource = "Resources/Styles/LightTheme.xaml";
-
-        public string ThemeSource
-        {
-            get
-            {
-                return themeSource;
-            }
-            set
-            {
-                if (themeSource != value)
-                {
-                    themeSource = value;
-                    OnPropertyChanged(nameof(ThemeSource));
-                }
-            }
         }
     }
 }

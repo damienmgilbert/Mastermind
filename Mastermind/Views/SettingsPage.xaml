@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Mastermind.Views.SettingsPage"
-             Title="SettingsPage">
+             xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+             x:DataType="viewModels:SettingsViewModel"
+             Title="{Binding Title, Mode=OneWay}"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
     <VerticalStackLayout>
         <Label 
             Text="Welcome to .NET MAUI!"

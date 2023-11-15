@@ -4,13 +4,16 @@
              x:Class="Mastermind.Views.HomePage"
              xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
              Title="{Binding Title, Mode=OneWay}"
-             x:DataType="viewModels:HomeViewModel">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             x:DataType="viewModels:HomeViewModel"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+    <Border>
+        <VerticalStackLayout>
+            <Label 
+                Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
 
-        <Button Text="Changed Theme" Command="{Binding ChangeThemeCommand}"/>
-    </VerticalStackLayout>
+            <Button Text="Changed Theme" Command="{Binding ChangeThemeCommand}"/>
+        </VerticalStackLayout>
+    </Border>
 </ContentPage>

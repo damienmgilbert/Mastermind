@@ -1,4 +1,6 @@
-﻿using Mastermind.Views;
+﻿using Mastermind.ViewModels;
+using Mastermind.Views;
+using System.Windows.Input;
 
 namespace Mastermind
 {
@@ -13,6 +15,14 @@ namespace Mastermind
         private void RegisterRoutes()
         {
             Routing.RegisterRoute("Home", typeof(HomePage));
+            Routing.RegisterRoute("About", typeof(AboutPage));
+            Routing.RegisterRoute("Settings", typeof(SettingsPage));
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            Shell.Current.GoToAsync($"//{button.Text}");
         }
     }
 }
