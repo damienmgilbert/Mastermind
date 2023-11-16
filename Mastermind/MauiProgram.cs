@@ -1,4 +1,5 @@
-﻿using Mastermind.Services;
+﻿using CommunityToolkit.Maui;
+using Mastermind.Services;
 using Mastermind.ViewModels;
 using Mastermind.Views;
 using Microsoft.Extensions.Logging;
@@ -13,6 +14,8 @@ namespace Mastermind
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                // Initialize the .NET MAUI Community Toolkit by adding the below line of code
+                .UseMauiCommunityToolkit()
                 .RegisterViewModels()
                 .RegisterViews()
                 .RegisterServices()
