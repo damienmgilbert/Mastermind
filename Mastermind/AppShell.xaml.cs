@@ -1,4 +1,5 @@
-﻿using Mastermind.ViewModels;
+﻿using CommunityToolkit.Mvvm.Input;
+using Mastermind.ViewModels;
 using Mastermind.Views;
 using System.Windows.Input;
 
@@ -19,7 +20,7 @@ namespace Mastermind
             Routing.RegisterRoute("Settings", typeof(SettingsPage));
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
+        private void NavigationButton_Clicked(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             Shell.Current.GoToAsync($"//{button.Text}");

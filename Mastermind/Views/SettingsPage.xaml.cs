@@ -1,12 +1,13 @@
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Mastermind.ViewModels;
 
 namespace Mastermind.Views;
 
 public partial class SettingsPage : ContentPage
 {
-	public SettingsPage(SettingsViewModel viewModel)
+	public SettingsPage()
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel;
+		this.BindingContext = Ioc.Default.GetRequiredService<SettingsViewModel>();
 	}
 }

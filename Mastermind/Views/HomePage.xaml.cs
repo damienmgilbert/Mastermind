@@ -1,12 +1,13 @@
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Mastermind.ViewModels;
 
 namespace Mastermind.Views;
 
 public partial class HomePage : ContentPage
 {
-	public HomePage(HomeViewModel viewModel)
+	public HomePage()
 	{
 		InitializeComponent();
-		this.BindingContext = viewModel;
+		this.BindingContext = Ioc.Default.GetRequiredService<HomeViewModel>();
 	}
 }

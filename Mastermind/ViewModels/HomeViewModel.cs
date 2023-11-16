@@ -1,4 +1,7 @@
-﻿using Mastermind.Resources.Styles;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.DependencyInjection;
+using CommunityToolkit.Mvvm.Input;
+using Mastermind.Resources.Styles;
 using Mastermind.Services;
 using System;
 using System.Collections.Generic;
@@ -8,20 +11,28 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Mastermind.ViewModels;
-public class HomeViewModel : BaseViewModel
+public partial class HomeViewModel : BaseViewModel
 {
     private readonly AppThemeService appThemeService;
 
-    public HomeViewModel(AppThemeService appThemeService)
+    public HomeViewModel()
     {
-        this.appThemeService = appThemeService;
+        this.appThemeService = Ioc.Default.GetRequiredService<AppThemeService>();
         this.Title = "Home";
-        
-        this.ChangeThemeCommand = new Command(() =>
-        {
-            this.appThemeService.ChangeTheme();
-        });
     }
 
-    public ICommand ChangeThemeCommand { get; private set; }
+    [RelayCommand]
+    private void ShowPopup()
+    {
+        this.IsPopoverVisible = !this.IsPopoverVisible;
+    }
+
+    [ObservableProperty]
+    bool isPopoverVisible;
+
+    [RelayCommand]
+    private void ChangeTheme()
+    {
+        this.appThemeService.ChangeTheme();
+    }
 }

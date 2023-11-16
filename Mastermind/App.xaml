@@ -1,7 +1,8 @@
-﻿<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mastermind.App">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application
+    x:Class="Mastermind.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -9,8 +10,8 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Style TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}"/>
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
                 <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
@@ -26,7 +27,7 @@
                             </VisualState>
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
-                                    <Setter Property="BackgroundColor" Value="{DynamicResource DisabledButtonColor}"/>
+                                    <Setter Property="BackgroundColor" Value="{DynamicResource DisabledButtonColor}" />
                                 </VisualState.Setters>
                             </VisualState>
                             <VisualState x:Name="PointerOver">
@@ -40,15 +41,15 @@
             </Style>
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}"/>
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
             </Style>
 
             <Style TargetType="Border">
-                <Setter Property="Stroke" Value="{DynamicResource BorderColor}"/>
-                <Setter Property="StrokeThickness" Value="2"/>
+                <Setter Property="Stroke" Value="{DynamicResource BorderColor}" />
+                <Setter Property="StrokeThickness" Value="2" />
                 <Setter Property="StrokeShape">
                     <Setter.Value>
-                        <RoundRectangle CornerRadius="7, 7, 7, 7"/>
+                        <RoundRectangle CornerRadius="7, 7, 7, 7" />
                     </Setter.Value>
                 </Setter>
             </Style>

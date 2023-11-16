@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Mvvm.DependencyInjection;
 using Mastermind.Services;
 using Mastermind.ViewModels;
 using Mastermind.Views;
@@ -28,7 +29,17 @@ namespace Mastermind
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
+            Ioc.Default.ConfigureServices(
+                new ServiceCollection()
+                .AddTransient<HomeViewModel>()
+                .AddTransient<AboutViewModel>()
+                .AddTransient<SettingsViewModel>()
+                .AddTransient<HomePage>()
+                .AddTransient<AboutPage>()
+                .AddTransient<SettingsPage>()
+                .AddTransient<AppThemeService>()
+                .BuildServiceProvider()
+                );
             return builder.Build();
         }
 

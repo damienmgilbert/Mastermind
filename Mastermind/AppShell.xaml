@@ -3,28 +3,32 @@
     x:Class="Mastermind.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:Mastermind.Views"
     xmlns:sys="clr-namespace:System;assembly=netstandard"
-    Shell.FlyoutBehavior="Locked"
-    Shell.FlyoutBackgroundColor="{DynamicResource PageBackgroundColor}"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    x:Name="shell"
     Title="Mastermind"
-    x:Name="shell">
+    Shell.FlyoutBackgroundColor="{DynamicResource PageBackgroundColor}"
+    Shell.FlyoutBehavior="Flyout">
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
             <Border Stroke="{DynamicResource BorderColor}">
-                <Grid BackgroundColor="{DynamicResource PageBackgroundColor}"
-                      HeightRequest="200"
-                      WidthRequest="200"
-                      RowDefinitions="0.2*, 0.8*">
-                    <Label Text="Mastermind" 
-                           Grid.Row="0" 
-                           HorizontalOptions="Center" 
-                           FontAttributes="Bold,Italic" 
-                           FontSize="Large"/>
-                    <Image Grid.Row="1" 
-                           Aspect="AspectFit"
-                           Source="mastermind.jpg"/>
+                <Grid
+                    BackgroundColor="{DynamicResource PageBackgroundColor}"
+                    HeightRequest="200"
+                    RowDefinitions="0.2*, 0.8*"
+                    WidthRequest="200">
+                    <Label
+                        Grid.Row="0"
+                        FontAttributes="Bold,Italic"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="Mastermind" />
+                    <Image
+                        Grid.Row="1"
+                        Aspect="AspectFit"
+                        Source="mastermind.jpg" />
                 </Grid>
             </Border>
         </DataTemplate>
@@ -33,20 +37,24 @@
     <Shell.FlyoutContentTemplate>
         <DataTemplate>
             <Border Stroke="{DynamicResource BorderColor}">
-                <CollectionView BindingContext="{x:Reference shell}"
-                                IsGrouped="True"
-                                ItemsSource="{Binding FlyoutItems}">
+                <CollectionView
+                    BindingContext="{x:Reference shell}"
+                    IsGrouped="True"
+                    ItemsSource="{Binding FlyoutItems}">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Border Stroke="{DynamicResource BorderColor}">
                                 <Grid ColumnDefinitions="0.2*,0.8*">
-                                    <Image Source="{Binding FlyoutIcon}" 
-                                           Margin="5" 
-                                           HeightRequest="45" />
-                                    <Button Grid.Column="1"
-                                            Text="{Binding Title}"
-                                            FontAttributes="Italic"
-                                            Clicked="Button_Clicked" />
+                                    <Image
+                                        Margin="5"
+                                        HeightRequest="45"
+                                        Source="{Binding FlyoutIcon}" />
+                                    <Button
+                                        x:Name="navigationButton"
+                                        Grid.Column="1"
+                                        Clicked="NavigationButton_Clicked"
+                                        FontAttributes="Italic"
+                                        Text="{Binding Title}" />
                                 </Grid>
                             </Border>
                         </DataTemplate>
@@ -56,24 +64,34 @@
         </DataTemplate>
     </Shell.FlyoutContentTemplate>
 
-    <FlyoutItem Title="Home" Route="Home" Icon="home.jpg" >
+    <FlyoutItem
+        Title="Home"
+        Icon="home.jpg"
+        Route="Home">
         <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
     </FlyoutItem>
-    <FlyoutItem Title="About" Icon="about.jpg" Route="About">
-        <ShellContent  ContentTemplate="{DataTemplate views:AboutPage}" />
+    <FlyoutItem
+        Title="About"
+        Icon="about.jpg"
+        Route="About">
+        <ShellContent ContentTemplate="{DataTemplate views:AboutPage}" />
     </FlyoutItem>
 
-    <FlyoutItem Title="Settings" Icon="settings.jpg" Route="Settings">
-        <ShellContent  ContentTemplate="{DataTemplate views:SettingsPage}" />
+    <FlyoutItem
+        Title="Settings"
+        Icon="settings.jpg"
+        Route="Settings">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
     </FlyoutItem>
 
     <Shell.FlyoutFooterTemplate>
         <DataTemplate>
             <Border Stroke="{DynamicResource BorderColor}">
                 <Grid>
-                    <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
-                           TextColor="{DynamicResource PrimaryTextColor}"
-                           HorizontalOptions="Center" />
+                    <Label
+                        HorizontalOptions="Center"
+                        Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy}'}"
+                        TextColor="{DynamicResource PrimaryTextColor}" />
                 </Grid>
             </Border>
         </DataTemplate>

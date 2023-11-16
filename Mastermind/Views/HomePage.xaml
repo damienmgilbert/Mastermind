@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mastermind.Views.HomePage"
-             xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
-             Title="{Binding Title, Mode=OneWay}"
-             x:DataType="viewModels:HomeViewModel"
-             BackgroundColor="{DynamicResource PageBackgroundColor}">
+<ContentPage
+    x:Class="Mastermind.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    Title="{Binding Title, Mode=OneWay}"
+    x:DataType="viewModels:HomeViewModel"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
     <Border>
-        <VerticalStackLayout>
-            <Label 
-                Text="Welcome to .NET MAUI!"
-                VerticalOptions="Center" 
-                HorizontalOptions="Center" />
+        <Grid>
+            <VerticalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Welcome to .NET MAUI!"
+                    VerticalOptions="Center" />
 
-            <Button Text="Changed Theme" Command="{Binding ChangeThemeCommand}"/>
-        </VerticalStackLayout>
+                <Button Command="{Binding ChangeThemeCommand}" Text="Changed Theme" />
+                <Button
+                    x:Name="button"
+                    Command="{Binding ShowPopupCommand}"
+                    Text="Click Me To Show Popup"
+                    WidthRequest="200" />
+            </VerticalStackLayout>
+            <views:PopoverView AnchorElement="{Binding Source={x:Reference button}}" IsVisible="{Binding IsPopoverVisible}">
+                <Border
+                    HeightRequest="100"
+                    HorizontalOptions="Center"
+                    Stroke="Black"
+                    StrokeShape="RoundRectangle 7,7,7,7"
+                    StrokeThickness="3"
+                    VerticalOptions="Center"
+                    WidthRequest="100">
+                    <Label Text="This is a popover!" />
+                </Border>
+            </views:PopoverView>
+        </Grid>
     </Border>
 </ContentPage>

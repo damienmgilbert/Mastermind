@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using Mastermind.Views;
+using Microsoft.Maui.Controls.Handlers.Compatibility;
+using Microsoft.UI.Xaml;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -21,5 +23,4 @@ namespace Mastermind.WinUI
 
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
-
 }
