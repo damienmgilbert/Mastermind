@@ -9,9 +9,41 @@ using System.Threading.Tasks;
 namespace Mastermind.Models;
 public partial class Game : ObservableObject
 {
+
+    #region Fields
+    [ObservableProperty]
+    private GameRow currentRow = new();
+    [ObservableProperty]
+    private GameRow eighthRow = new();
+    [ObservableProperty]
+    private GameRow fifthRow = new();
+    [ObservableProperty]
+    private PieceChoice firstPieceAnswer;
+    [ObservableProperty]
+    private GameRow firstRow = new();
+    [ObservableProperty]
+    private PieceChoice fourthPieceAnswer;
+    [ObservableProperty]
+    private GameRow fourthRow = new();
+    [ObservableProperty]
+    private PieceChoice secondPieceAnswer;
+    [ObservableProperty]
+    private GameRow secondRow = new();
+    [ObservableProperty]
+    private GameRow seventhRow = new();
+    [ObservableProperty]
+    private GameRow sixthRow = new();
+    [ObservableProperty]
+    private PieceChoice thirdPieceAnswer;
+    [ObservableProperty]
+    private GameRow thirdRow = new();
+    #endregion
+
+    #region Constructors
     public Game()
     {
         this.FirstRow.GameRowChecker.IsCheckable = true;
+        this.FirstRow.GameRowChecker.IsCheckableEnabled = false;
         this.FirstRow.FirstPiece.IsEditable = true;
         this.FirstRow.SecondPiece.IsEditable = true;
         this.FirstRow.ThirdPiece.IsEditable = true;
@@ -31,7 +63,9 @@ public partial class Game : ObservableObject
         this.ThirdPieceAnswer = PieceChoice.Red;
         this.FourthPieceAnswer = PieceChoice.Red;
     }
+    #endregion
 
+    #region Public methods
     public void CheckBoard()
     {
         if (this.CurrentRow.FirstPiece.PieceChoice == this.FirstPieceAnswer)
@@ -44,7 +78,7 @@ public partial class Game : ObservableObject
         }
         else
         {
-            this.CurrentRow.GameRowChecker.FirstPieceValidity = ChoiceValidity.NotPresent; 
+            this.CurrentRow.GameRowChecker.FirstPieceValidity = ChoiceValidity.NotPresent;
         }
 
         if (this.CurrentRow.SecondPiece.PieceChoice == this.SecondPieceAnswer)
@@ -198,44 +232,7 @@ public partial class Game : ObservableObject
         {
 
         }
-    } 
+    }
+    #endregion
 
-    [ObservableProperty]
-    private GameRow currentRow = new();
-
-    [ObservableProperty]
-    private PieceChoice firstPieceAnswer;
-
-    [ObservableProperty]
-    private PieceChoice secondPieceAnswer;
-
-    [ObservableProperty]
-    private PieceChoice thirdPieceAnswer;
-
-    [ObservableProperty]
-    private PieceChoice fourthPieceAnswer;
-
-    [ObservableProperty]
-    private GameRow firstRow = new();
-
-    [ObservableProperty]
-    private GameRow secondRow = new();
-
-    [ObservableProperty]
-    private GameRow thirdRow = new();
-
-    [ObservableProperty]
-    private GameRow fourthRow = new();
-
-    [ObservableProperty]
-    private GameRow fifthRow = new();
-
-    [ObservableProperty]
-    private GameRow sixthRow = new();
-
-    [ObservableProperty]
-    private GameRow seventhRow = new();
-
-    [ObservableProperty]
-    private GameRow eighthRow = new();
 }

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using System;
+using System.Collections;
 using System.Linq;
 
 namespace Mastermind.Models;

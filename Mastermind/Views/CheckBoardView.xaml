@@ -55,15 +55,15 @@
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="4"
+            Command="{Binding CheckRowCommand}"
             CornerRadius="50"
             FontSize="20"
-            HeightRequest="75"
+            HeightRequest="50"
             HorizontalOptions="Center"
-            Command="{Binding CheckRowCommand}"
             IsEnabled="{Binding IsCheckableEnabled, Mode=OneWay}"
             IsVisible="{Binding IsCheckable, Mode=OneWay}"
             Text="Check"
             VerticalOptions="Center"
-            WidthRequest="150" />
+            WidthRequest="100" />
     </Grid>
 </ContentView>

@@ -9,7 +9,7 @@
     x:DataType="views:GameRowView">
     <Grid
         BindingContext="{x:Reference this}"
-        ColumnDefinitions="0.7*,0.3*"
+        ColumnDefinitions="0.6*,0.4*"
         RowDefinitions="*">
         <views:GameRowPiecesView
             Grid.Row="0"
