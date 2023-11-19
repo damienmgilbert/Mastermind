@@ -9,4 +9,8 @@ public partial class GameService : ObservableObject
 {
     [ObservableProperty]
     private Game game = new();
+    public void RestartGame()
+    {
+        this.game.Restart();
+    }
 }

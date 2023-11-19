@@ -55,6 +55,7 @@ namespace Mastermind
             builder.Services.AddTransient<GameRowPiecesView>();
             builder.Services.AddTransient<CheckBoardView>();
             builder.Services.AddTransient<SimplePopup>();
+            builder.Services.AddTransient<MessagePopup>();
             return builder;
         }
 

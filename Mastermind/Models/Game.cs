@@ -26,6 +26,10 @@ public partial class Game : ObservableObject
     [ObservableProperty]
     private GameRow fourthRow = new();
     [ObservableProperty]
+    private bool hasLost;
+    [ObservableProperty]
+    private bool hasWon;
+    [ObservableProperty]
     private PieceChoice secondPieceAnswer;
     [ObservableProperty]
     private GameRow secondRow = new();
@@ -42,31 +46,12 @@ public partial class Game : ObservableObject
     #region Constructors
     public Game()
     {
-        this.FirstRow.GameRowChecker.IsCheckable = true;
-        this.FirstRow.GameRowChecker.IsCheckableEnabled = false;
-        this.FirstRow.FirstPiece.IsEditable = true;
-        this.FirstRow.SecondPiece.IsEditable = true;
-        this.FirstRow.ThirdPiece.IsEditable = true;
-        this.FirstRow.FourthPiece.IsEditable = true;
-        this.CurrentRow = this.FirstRow;
-
-        this.SecondRow.GameRowChecker.IsPlayable = true;
-        this.ThirdRow.GameRowChecker.IsPlayable = true;
-        this.FourthRow.GameRowChecker.IsPlayable = true;
-        this.FifthRow.GameRowChecker.IsPlayable = true;
-        this.SixthRow.GameRowChecker.IsPlayable = true;
-        this.SeventhRow.GameRowChecker.IsPlayable = true;
-        this.EighthRow.GameRowChecker.IsPlayable = true;
-
-        this.FirstPieceAnswer = PieceChoice.Red;
-        this.SecondPieceAnswer = PieceChoice.Red;
-        this.ThirdPieceAnswer = PieceChoice.Red;
-        this.FourthPieceAnswer = PieceChoice.Red;
+        this.Restart();
     }
     #endregion
 
     #region Public methods
-    public void CheckBoard()
+    public async void CheckBoard()
     {
         if (this.CurrentRow.FirstPiece.PieceChoice == this.FirstPieceAnswer)
         {
@@ -119,6 +104,13 @@ public partial class Game : ObservableObject
         {
             this.CurrentRow.GameRowChecker.FourthPieceValidity = ChoiceValidity.NotPresent;
         }
+
+        if (this.CurrentRow.GameRowChecker.FirstPieceValidity == ChoiceValidity.PresentAndInPosition && this.CurrentRow.GameRowChecker.SecondPieceValidity == ChoiceValidity.PresentAndInPosition && this.CurrentRow.GameRowChecker.ThirdPieceValidity == ChoiceValidity.PresentAndInPosition && this.CurrentRow.GameRowChecker.FourthPieceValidity == ChoiceValidity.PresentAndInPosition)
+        {
+            this.HasWon = true;
+        }
+
+
         this.CurrentRow.GameRowChecker.IsPlayable = true;
         this.CurrentRow.GameRowChecker.IsCheckable = false;
         this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
@@ -132,7 +124,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = SecondRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -147,7 +139,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = ThirdRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -162,7 +154,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = FourthRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -177,7 +169,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = FifthRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -192,7 +184,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = SixthRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -207,7 +199,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = SeventhRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -222,7 +214,7 @@ public partial class Game : ObservableObject
             this.CurrentRow = EighthRow;
             this.CurrentRow.GameRowChecker.IsPlayable = false;
             this.CurrentRow.GameRowChecker.IsCheckable = true;
-            this.CurrentRow.GameRowChecker.IsCheckableEnabled = true;
+            this.CurrentRow.GameRowChecker.IsCheckableEnabled = false;
             this.CurrentRow.FirstPiece.IsEditable = true;
             this.CurrentRow.SecondPiece.IsEditable = true;
             this.CurrentRow.ThirdPiece.IsEditable = true;
@@ -230,7 +222,49 @@ public partial class Game : ObservableObject
         }
         else if (CurrentRow == EighthRow)
         {
+            this.HasLost = true;
+        }
+    }
+    public void Restart()
+    {
+        this.FirstRow = new();
+        this.SecondRow = new();
+        this.ThirdRow = new();
+        this.FourthRow = new();
+        this.FifthRow = new();
+        this.SixthRow = new();
+        this.SeventhRow = new();
+        this.EighthRow = new();
 
+        this.FirstRow.GameRowChecker.IsCheckable = true;
+        this.FirstRow.GameRowChecker.IsCheckableEnabled = false;
+        this.FirstRow.FirstPiece.IsEditable = true;
+        this.FirstRow.SecondPiece.IsEditable = true;
+        this.FirstRow.ThirdPiece.IsEditable = true;
+        this.FirstRow.FourthPiece.IsEditable = true;
+        this.CurrentRow = this.FirstRow;
+
+        this.SecondRow.GameRowChecker.IsPlayable = true;
+        this.ThirdRow.GameRowChecker.IsPlayable = true;
+        this.FourthRow.GameRowChecker.IsPlayable = true;
+        this.FifthRow.GameRowChecker.IsPlayable = true;
+        this.SixthRow.GameRowChecker.IsPlayable = true;
+        this.SeventhRow.GameRowChecker.IsPlayable = true;
+        this.EighthRow.GameRowChecker.IsPlayable = true;
+
+        this.FirstPieceAnswer = GetRandomChoice();
+        this.SecondPieceAnswer = GetRandomChoice();
+        this.ThirdPieceAnswer = GetRandomChoice();
+        this.FourthPieceAnswer = GetRandomChoice();
+
+        PieceChoice GetRandomChoice()
+        {
+            Random random = new();
+            var choices = Enum.GetValues<PieceChoice>().Cast<int>().ToArray();
+            int max = choices.Max();
+            int value = random.Next(1, max + 1);
+            PieceChoice pieceChoice = (PieceChoice)value;
+            return pieceChoice;
         }
     }
     #endregion

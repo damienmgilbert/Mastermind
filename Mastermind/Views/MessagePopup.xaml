@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="Mastermind.Views.MessagePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    x:Name="this"
+    x:DataType="views:MessagePopup">
+
+    <toolkit:Popup.Resources>
+        <Style TargetType="{x:Type views:MessagePopup}">
+            <Setter Property="Size" Value="200,200" />
+            <Setter Property="Color" Value="White" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="False" />
+        </Style>
+    </toolkit:Popup.Resources>
+
+    <Border
+        BackgroundColor="White"
+        BindingContext="{x:Reference this}"
+        Stroke="Black"
+        StrokeShape="RoundRectangle 7,7,7,7"
+        StrokeThickness="3">
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label
+                FontSize="Large"
+                HorizontalOptions="Center"
+                Text="{Binding Message, Mode=OneWay}"
+                TextColor="Black"
+                VerticalOptions="Center" />
+
+            <Button Command="{Binding RestartGameCommand}" Text="Restart" />
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>
