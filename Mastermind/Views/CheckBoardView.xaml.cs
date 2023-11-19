@@ -1,6 +1,7 @@
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using Mastermind.Models;
+using Mastermind.Services;
 using Mastermind.ViewModels;
 
 namespace Mastermind.Views;
@@ -15,12 +16,14 @@ public partial class CheckBoardView : ContentView
     public static readonly BindableProperty IsPlayableProperty = BindableProperty.Create(nameof(IsPlayable), typeof(bool), typeof(CheckBoardView), default(bool));
     public static readonly BindableProperty SecondPieceValidityProperty = BindableProperty.Create(nameof(SecondPieceValidity), typeof(ChoiceValidity), typeof(CheckBoardView), default(ChoiceValidity));
     public static readonly BindableProperty ThirdPieceValidityProperty = BindableProperty.Create(nameof(ThirdPieceValidity), typeof(ChoiceValidity), typeof(CheckBoardView), default(ChoiceValidity));
+    GameService gameService;
     #endregion
 
     #region Constructors
     public CheckBoardView()
     {
         InitializeComponent();
+        this.gameService = Ioc.Default.GetRequiredService<GameService>();
         //this.BindingContext = Ioc.Default.GetRequiredService<CheckBoardViewModel>();
     }
     #endregion
@@ -40,7 +43,7 @@ public partial class CheckBoardView : ContentView
     [RelayCommand]
     private void CheckRow()
     {
-
+        this.gameService.Game.CheckBoard();
     }
 
     public bool IsCheckable

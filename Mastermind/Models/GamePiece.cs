@@ -11,4 +11,7 @@ public partial class GamePiece : ObservableObject
 
     [ObservableProperty]
     private bool isEditable;
+
+    [ObservableProperty]
+    private PieceChoice pieceChoice = PieceChoice.None;
 }

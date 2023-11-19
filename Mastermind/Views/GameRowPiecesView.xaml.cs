@@ -128,6 +128,7 @@ public partial class GameRowPiecesView : ContentView
                 default:
                     break;
             }
+            this.SelectedGamePiece.PieceChoice = pieceChoice;
         }
     }
 
