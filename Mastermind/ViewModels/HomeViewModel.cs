@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using Mastermind.Resources.Styles;
@@ -18,17 +19,20 @@ public partial class HomeViewModel : BaseViewModel
     public HomeViewModel()
     {
         this.appThemeService = Ioc.Default.GetRequiredService<AppThemeService>();
+        this.popupService = Ioc.Default.GetRequiredService<IPopupService>();
         this.Title = "Home";
     }
 
     [RelayCommand]
     private void ShowPopup()
     {
-        this.IsPopoverVisible = !this.IsPopoverVisible;
+        //this.IsPopoverVisible = !this.IsPopoverVisible;
+        this.popupService.ShowPopup<SimplePopupViewModel>();
     }
 
     [ObservableProperty]
     bool isPopoverVisible;
+    IPopupService popupService;
 
     [RelayCommand]
     private void ChangeTheme()

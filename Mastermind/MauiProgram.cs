@@ -17,9 +17,9 @@ namespace Mastermind
                 .UseMauiApp<App>()
                 // Initialize the .NET MAUI Community Toolkit by adding the below line of code
                 .UseMauiCommunityToolkit()
-                .RegisterViewModels()
-                .RegisterViews()
+                .RegisterRoutes()
                 .RegisterServices()
+                .RegisterPopups()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -29,33 +29,24 @@ namespace Mastermind
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-            Ioc.Default.ConfigureServices(
-                new ServiceCollection()
-                .AddTransient<HomeViewModel>()
-                .AddTransient<AboutViewModel>()
-                .AddTransient<SettingsViewModel>()
-                .AddTransient<HomePage>()
-                .AddTransient<AboutPage>()
-                .AddTransient<SettingsPage>()
-                .AddTransient<AppThemeService>()
-                .BuildServiceProvider()
-                );
+            
+            Ioc.Default.ConfigureServices(builder.Services.BuildServiceProvider());
+            
             return builder.Build();
         }
 
-        private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
+        private static MauiAppBuilder RegisterPopups(this MauiAppBuilder builder)
         {
-            builder.Services.AddTransient<HomeViewModel>();
-            builder.Services.AddTransient<AboutViewModel>();
-            builder.Services.AddTransient<SettingsViewModel>();
+            builder.Services.AddTransientPopup<SimplePopup, SimplePopupViewModel>();
             return builder;
         }
 
-        private static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
+        private static MauiAppBuilder RegisterRoutes(this MauiAppBuilder builder)
         {
-            builder.Services.AddTransient<HomePage>();
-            builder.Services.AddTransient<AboutPage>();
-            builder.Services.AddTransient<SettingsPage>();
+            builder.Services.AddTransientWithShellRoute<HomePage, HomeViewModel>("Home");
+            builder.Services.AddTransientWithShellRoute<AboutPage, AboutViewModel>("About");
+            builder.Services.AddTransientWithShellRoute<SettingsPage, SettingsViewModel>("Setting");
+            builder.Services.AddTransientWithShellRoute<GamePage, GameViewModel>("Game");
             return builder;
         }
 

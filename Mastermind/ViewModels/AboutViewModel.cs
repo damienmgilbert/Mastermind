@@ -7,11 +7,3 @@ public sealed class AboutViewModel : BaseViewModel
         this.Title = "About";
     }
 }
-
-public class GameViewModel : BaseViewModel
-{
-    public GameViewModel()
-    {
-
-    }
-}

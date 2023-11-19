@@ -23,7 +23,7 @@
                     Text="Click Me To Show Popup"
                     WidthRequest="200" />
             </VerticalStackLayout>
-            <views:PopoverView AnchorElement="{Binding Source={x:Reference button}}" IsVisible="{Binding IsPopoverVisible}">
+            <!--<views:PopoverView AnchorElement="{Binding Source={x:Reference button}}" IsVisible="{Binding IsPopoverVisible}">
                 <Border
                     HeightRequest="100"
                     HorizontalOptions="Center"
@@ -34,7 +34,7 @@
                     WidthRequest="100">
                     <Label Text="This is a popover!" />
                 </Border>
-            </views:PopoverView>
+            </views:PopoverView>-->
         </Grid>
     </Border>
 </ContentPage>

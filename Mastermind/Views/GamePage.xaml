@@ -1,12 +1,335 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mastermind.Views.GamePage"
-             Title="GamePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+<ContentPage
+    x:Class="Mastermind.Views.GamePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    Title="{Binding Title, Mode=OneWay}"
+    x:DataType="viewModels:GameViewModel"
+    BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid ColumnDefinitions="*,*,*,*,*" RowDefinitions="*,*,*,*,*,*,*,*">
+        <Button
+            x:Name="p00"
+            Grid.Row="0"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p00}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p01"
+            Grid.Row="0"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p01}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p02"
+            Grid.Row="0"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p02}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p03"
+            Grid.Row="0"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p03}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="4"
+            ColumnDefinitions="*,*,*,*"
+            RowDefinitions="*">
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="25"
+                Stroke="Black"
+                WidthRequest="25" />
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="25"
+                Stroke="Black"
+                WidthRequest="25" />
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="2"
+                HeightRequest="25"
+                Stroke="Black"
+                WidthRequest="25" />
+            <Ellipse
+                Grid.Row="0"
+                Grid.Column="3"
+                HeightRequest="25"
+                Stroke="Black"
+                WidthRequest="25" />
+        </Grid>
+
+        <Button
+            x:Name="p10"
+            Grid.Row="1"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p10}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p11"
+            Grid.Row="1"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p11}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p12"
+            Grid.Row="1"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p12}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p13"
+            Grid.Row="1"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p13}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+
+        <Button
+            x:Name="p20"
+            Grid.Row="2"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p20}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p21"
+            Grid.Row="2"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p21}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p22"
+            Grid.Row="2"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p22}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p23"
+            Grid.Row="2"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p23}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p30"
+            Grid.Row="3"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p30}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p31"
+            Grid.Row="3"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p31}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p32"
+            Grid.Row="3"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p32}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p33"
+            Grid.Row="3"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p33}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p40"
+            Grid.Row="4"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p40}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p41"
+            Grid.Row="4"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p41}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p42"
+            Grid.Row="4"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p42}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p43"
+            Grid.Row="4"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p43}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p50"
+            Grid.Row="5"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p50}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p51"
+            Grid.Row="5"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p51}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p52"
+            Grid.Row="5"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p52}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p53"
+            Grid.Row="5"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p53}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p60"
+            Grid.Row="6"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p60}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p61"
+            Grid.Row="6"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p61}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p62"
+            Grid.Row="6"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p62}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p63"
+            Grid.Row="6"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p63}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p70"
+            Grid.Row="7"
+            Grid.Column="0"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p70}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p71"
+            Grid.Row="7"
+            Grid.Column="1"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p71}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p72"
+            Grid.Row="7"
+            Grid.Column="2"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p72}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+        <Button
+            x:Name="p73"
+            Grid.Row="7"
+            Grid.Column="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p73}"
+            CornerRadius="50"
+            HeightRequest="50"
+            WidthRequest="50" />
+    </Grid>
 </ContentPage>

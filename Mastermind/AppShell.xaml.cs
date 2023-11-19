@@ -10,14 +10,6 @@ namespace Mastermind
         public AppShell()
         {
             InitializeComponent();
-            this.RegisterRoutes();
-        }
-
-        private void RegisterRoutes()
-        {
-            Routing.RegisterRoute("Home", typeof(HomePage));
-            Routing.RegisterRoute("About", typeof(AboutPage));
-            Routing.RegisterRoute("Settings", typeof(SettingsPage));
         }
 
         private void NavigationButton_Clicked(object sender, EventArgs e)

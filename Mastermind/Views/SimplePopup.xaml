@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    x:Class="Mastermind.Views.SimplePopup"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    x:DataType="viewModels:SimplePopupViewModel">
+
+    <toolkit:Popup.Resources>
+        <Style TargetType="{x:Type views:SimplePopup}">
+            <Setter Property="Size" Value="200,200" />
+            <Setter Property="Color" Value="White" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="CanBeDismissedByTappingOutsideOfPopup" Value="True" />
+        </Style>
+    </toolkit:Popup.Resources>
+
+    <Border
+        Stroke="Black"
+        StrokeShape="RoundRectangle 7,7,7,7"
+        StrokeThickness="2">
+        <Grid
+            BackgroundColor="White"
+            ColumnDefinitions="*,*,*"
+            RowDefinitions="*,*,*">
+            <Button
+                Grid.Row="0"
+                Grid.Column="0"
+                BackgroundColor="#e11d48"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                BackgroundColor="#3b82f6"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="0"
+                Grid.Column="2"
+                BackgroundColor="#22c55e"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="#f97316"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="1"
+                BackgroundColor="#7c3aed"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="2"
+                BackgroundColor="#92400e"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="#94a3b8"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="1"
+                BackgroundColor="#d946ef"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+            <Button
+                Grid.Row="2"
+                Grid.Column="2"
+                BackgroundColor="#fbbf24"
+                CornerRadius="50"
+                HeightRequest="50"
+                WidthRequest="50" />
+        </Grid>
+    </Border>
+</toolkit:Popup>

@@ -70,6 +70,14 @@
         Route="Home">
         <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
     </FlyoutItem>
+
+    <FlyoutItem
+        Title="Game"
+        Icon="game.jpg"
+        Route="Game">
+        <ShellContent ContentTemplate="{DataTemplate views:GamePage}" />
+    </FlyoutItem>
+
     <FlyoutItem
         Title="About"
         Icon="about.jpg"

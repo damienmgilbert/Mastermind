@@ -46,6 +46,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\about.jpg" />
+	  <None Remove="Resources\Images\game.jpg" />
 	  <None Remove="Resources\Images\home.jpg" />
 	  <None Remove="Resources\Images\mastermind.jpg" />
 	  <None Remove="Resources\Images\settings.jpg" />
@@ -86,6 +87,9 @@
 	  <MauiXaml Update="Views\GamePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\GamePieceView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -93,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SettingsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SimplePopup.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
