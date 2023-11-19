@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Mastermind.Views.GameRowView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    x:Name="this"
+    x:DataType="views:GameRowView">
+    <Grid
+        BindingContext="{x:Reference this}"
+        ColumnDefinitions="0.7*,0.3*"
+        RowDefinitions="*">
+        <views:GameRowPiecesView
+            Grid.Row="0"
+            Grid.Column="0"
+            FirstPiece="{Binding GameRow.FirstPiece}"
+            FourthPiece="{Binding GameRow.FourthPiece}"
+            SecondPiece="{Binding GameRow.SecondPiece}"
+            ThirdPiece="{Binding GameRow.ThirdPiece}" />
+        <views:CheckBoardView
+            Grid.Row="0"
+            Grid.Column="1"
+            FirstPieceValidity="{Binding GameRow.GameRowChecker.FirstPieceValidity}"
+            FourthPieceValidity="{Binding GameRow.GameRowChecker.FourthPieceValidity}"
+            IsCheckable="{Binding GameRow.GameRowChecker.IsCheckable}"
+            IsCheckableEnabled="{Binding GameRow.GameRowChecker.IsCheckableEnabled}"
+            IsPlayable="{Binding GameRow.GameRowChecker.IsPlayable}"
+            SecondPieceValidity="{Binding GameRow.GameRowChecker.SecondPieceValidity}"
+            ThirdPieceValidity="{Binding GameRow.GameRowChecker.ThirdPieceValidity}" />
+    </Grid>
+</ContentView>

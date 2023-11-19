@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Mastermind.Views.GameRowPiecesView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:Mastermind.ViewModels"
+    xmlns:views="clr-namespace:Mastermind.Views"
+    x:Name="this"
+    x:DataType="views:GameRowPiecesView">
+    <Grid
+        BindingContext="{x:Reference this}"
+        ColumnDefinitions="*,*,*,*"
+        RowDefinitions="*">
+        <Button
+            x:Name="p1"
+            Grid.Row="0"
+            Grid.Column="0"
+            BackgroundColor="{Binding FirstPiece.BackgroundColor, Mode=OneWay}"
+            BorderColor="Black"
+            BorderWidth="3"
+            Command="{Binding SelectPieceCommand, Mode=OneWay}"
+            CommandParameter="{x:Reference p1}"
+            CornerRadius="50"
+            HeightRequest="50"
+            IsEnabled="{Binding FirstPiece.IsEditable, Mode=OneWay}"
+            WidthRequest="50" />
+        <Button
+            x:Name="p2"
+            Grid.Row="0"
+            Grid.Column="1"
+            BackgroundColor="{Binding SecondPiece.BackgroundColor, Mode=OneWay}"
+            BorderColor="Black"
+            BorderWidth="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p2}"
+            CornerRadius="50"
+            HeightRequest="50"
+            IsEnabled="{Binding SecondPiece.IsEditable, Mode=OneWay}"
+            WidthRequest="50" />
+        <Button
+            x:Name="p3"
+            Grid.Row="0"
+            Grid.Column="2"
+            BackgroundColor="{Binding ThirdPiece.BackgroundColor, Mode=OneWay}"
+            BorderColor="Black"
+            BorderWidth="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p3}"
+            CornerRadius="50"
+            HeightRequest="50"
+            IsEnabled="{Binding ThirdPiece.IsEditable, Mode=OneWay}"
+            WidthRequest="50" />
+        <Button
+            x:Name="p4"
+            Grid.Row="0"
+            Grid.Column="3"
+            BackgroundColor="{Binding FourthPiece.BackgroundColor, Mode=OneWay}"
+            BorderColor="Black"
+            BorderWidth="3"
+            Command="{Binding SelectPieceCommand}"
+            CommandParameter="{x:Reference p4}"
+            CornerRadius="50"
+            HeightRequest="50"
+            IsEnabled="{Binding FourthPiece.IsEditable, Mode=OneWay}"
+            WidthRequest="50" />
+    </Grid>
+</ContentView>

@@ -17,6 +17,8 @@ namespace Mastermind
                 .UseMauiApp<App>()
                 // Initialize the .NET MAUI Community Toolkit by adding the below line of code
                 .UseMauiCommunityToolkit()
+                .RegisterViewModels()
+                .RegisterViews()
                 .RegisterRoutes()
                 .RegisterServices()
                 .RegisterPopups()
@@ -37,7 +39,22 @@ namespace Mastermind
 
         private static MauiAppBuilder RegisterPopups(this MauiAppBuilder builder)
         {
-            builder.Services.AddTransientPopup<SimplePopup, SimplePopupViewModel>();
+            //builder.Services.AddTransientPopup<SimplePopup, SimplePopupViewModel>();
+            return builder;
+        }
+
+        private static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
+        {
+            builder.Services.AddTransient<GameRowPiecesViewModel>();
+            builder.Services.AddTransient<CheckBoardViewModel>();
+            return builder;
+        }
+
+        private static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
+        {
+            builder.Services.AddTransient<GameRowPiecesView>();
+            builder.Services.AddTransient<CheckBoardView>();
+            builder.Services.AddTransient<SimplePopup>();
             return builder;
         }
 
@@ -53,6 +70,7 @@ namespace Mastermind
         private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
         {
             builder.Services.AddSingleton<AppThemeService>();
+            builder.Services.AddSingleton<GameService>();
             return builder; 
         }
     }

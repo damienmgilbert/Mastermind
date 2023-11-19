@@ -10,5 +10,5 @@ namespace Mastermind.ViewModels;
 public partial class BaseViewModel : ObservableRecipient
 {
     [ObservableProperty]
-    private string title;
+    private string title = string.Empty;
 }

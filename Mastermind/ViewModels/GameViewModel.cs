@@ -2,6 +2,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
+using Mastermind.Models;
+using Mastermind.Services;
 using System;
 using System.Linq;
 
@@ -9,16 +11,13 @@ namespace Mastermind.ViewModels;
 
 public partial class GameViewModel : BaseViewModel
 {
-    IPopupService popupService;
+    GameService gameService;
+
     public GameViewModel() 
     {
-        this.popupService = Ioc.Default.GetRequiredService<IPopupService>();
+        this.gameService = Ioc.Default.GetRequiredService<GameService>();
         this.Title = "Game";
     }
 
-    [RelayCommand]
-    private void SelectPiece(View anchor)
-    {
-        this.popupService.ShowPopup<SimplePopupViewModel>(onPresenting: viewModel => viewModel.PositionPopup(anchor));
-    }
+    public Game Game { get => gameService.Game; set => gameService.Game = value; }
 }

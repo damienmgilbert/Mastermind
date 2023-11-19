@@ -1,4 +1,6 @@
-﻿using Mastermind.Resources.Styles;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Mastermind.Models;
+using Mastermind.Resources.Styles;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
